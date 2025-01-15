@@ -1,7 +1,12 @@
 package automatizado;
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class GoogleTest {
@@ -18,10 +23,21 @@ public class GoogleTest {
         driver.manage().window().maximize();
         driver.get(URL_BASE);
     }
-
     @Test
     public  void devePesquisarNoGoogle(){
+        
         iniciar();
+
+        WebElement inputPesquisa = driver.findElement(By.name("q"));
+        inputPesquisa.sendKeys("Batata frita" + Keys.ENTER);
+
+        //String resultado = driver.findElement(By.className("#_DiyHZ4mcFsjn1sQPmbyWQQ_40 > div.acCJ4b > div > div.eniVJf.RES9jf")).getText();
+
+        String resultado = driver.findElement(By.cssSelector("document.querySelector(\"#_DiyHZ4mcFsjn1sQPmbyWQQ_40 > div.acCJ4b > div > div.eniVJf.RES9jf\").textContent")).getText();
+
+        assertTrue(resultado, resultado.contains("Ver resultados relacionados"));
+
+        driver.quit();
     }
 
 }
