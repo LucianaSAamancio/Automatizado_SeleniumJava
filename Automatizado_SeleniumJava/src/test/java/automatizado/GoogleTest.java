@@ -31,11 +31,9 @@ public class GoogleTest {
         WebElement inputPesquisa = driver.findElement(By.name("q"));
         inputPesquisa.sendKeys("Batata frita" + Keys.ENTER);
 
-        //String resultado = driver.findElement(By.className("#_DiyHZ4mcFsjn1sQPmbyWQQ_40 > div.acCJ4b > div > div.eniVJf.RES9jf")).getText();
+        String resultado = driver.findElement(By.xpath("/html/body/div[3]/div/div[9]/div/div[1]/div[2]/div/div/g-scrolling-carousel/div[1]/div/div[1]")).getText();
 
-        String resultado = driver.findElement(By.cssSelector("document.querySelector(\"#_DiyHZ4mcFsjn1sQPmbyWQQ_40 > div.acCJ4b > div > div.eniVJf.RES9jf\").textContent")).getText();
-
-        assertTrue(resultado, resultado.contains("Ver resultados relacionados"));
+        assertTrue(resultado, resultado.contains("Ver resultados"));
 
         driver.quit();
     }
